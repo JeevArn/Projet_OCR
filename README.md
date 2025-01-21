@@ -42,13 +42,13 @@ Ecrire un script capable de reconnaître les caractères d'une image/document gr
 
 - Trouver un jeu de données pour entraîner un modèle d'OCR (https://huggingface.co/datasets/DonkeySmall/OCR-English-Printed-12)
 - Créer un modèle neuronal capable de reconnaître des caractères isolés (`train_ocr_model.py`)
-- Sauvegarder le modèle pour ne pas avoir à le réentraîner (car c'est trèèèèèèèès long) ! (`OCR_100000_words.h5`)
-- Segmenter une image de mot en images de caractères (`word_to_chars.py`)
+- Sauvegarder le modèle pour ne pas avoir à le réentraîner (car c'est trèèèèèèèès long) ! (`OCR_20000_words.h5`)
+- Segmenter une image de mot en images de caractères (`word_to_chars`)
 
 #### A faire :
 
-- Segmenter une image de ligne en mots (`line_to_words.py`)
-- Segmenter une image de document (plusieurs lignes) en lignes (`doc_to_lines.py`)
+- Segmenter une image de ligne en mots (`line_to_words`)
+- Segmenter une image de document (plusieurs lignes) en lignes (`doc_to_lines`)
 
 ## Interfaces
 
