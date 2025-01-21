@@ -1,3 +1,9 @@
+"""
+Ce script prend en arguments un chemin vers une image de texte et son type (mot, ligne ou paragraphe) et retourne le contenu textuel de l'image.
+"""
+
+
+
 import os
 import numpy as np
 import torch

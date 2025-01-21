@@ -1,3 +1,9 @@
+"""
+Ce script contient les fonctions permettant de segmenter les images de textes en images de caractères. Il est appelé par le script principal ocr_script.py.
+"""
+
+
+
 import os
 import numpy as np
 import cv2
