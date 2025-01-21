@@ -131,8 +131,8 @@ def main():
     # Vérification du nombre d'arguments
     if len(sys.argv) != 2:
         print("Erreur : Nombre incorrect d'arguments.")
-        print("Usage : python zenodo.py <file_path> <title> <author> <access_token>")
-        print('Exemple : python zenodo.py "chemin/vers/fichier.txt" "Titre du Dataset" "Prénom Nom" "ACCESS_TOKEN"')
+        print("Usage : python3 ocr_script.py <docPath> <docType>")
+        print('Exemple : python3 ocr_script.py chemin/vers/image.png word')
         sys.exit(1)
 
     # Parsing des arguments
