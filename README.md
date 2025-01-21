@@ -49,7 +49,7 @@ Ecrire un script capable de reconnaître les caractères d'une image/document gr
 
 #### A faire :
 
-- Appliquer une correction aux résultats de l'OCR (Bert ? Modèle perso ?)
+- Appliquer une correction aux résultats de l'OCR (Bert ? Modèle perso ?) --> `correction.py`
 
 
 ## Interfaces
