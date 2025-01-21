@@ -144,7 +144,7 @@ def main():
     args = parser.parse_args()
 
     # Charger le modèle d'OCR pré-entraîné
-    model = load_model('OCR_20000_words.h5')
+    model = load_model('OCR_50000_words.h5')
 
     # Formater le LabelEncoder
     classes = np.load('classes.npy')
