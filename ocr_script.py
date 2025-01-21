@@ -17,7 +17,7 @@ from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropou
 import matplotlib.pyplot as plt
 import argparse
 import sys
-from segmentation import word_to_chars, line_to_words, doc_to_lines 
+from segmentation import word_to_chars, line_to_words, doc_to_lines
 
 
 
@@ -62,6 +62,7 @@ def predict_text(docPath, docType, model, label_encoder):
         docPath (str): Chemin vers l'image du document.
         docType (str): Type de document ("word", "line" ou "doc").
         model: Modèle entraîné pour la reconnaissance de caractères.
+        label_encoder: Encodeur pour convertir les prédictions en caractères.
     
     Returns:
         str: Texte prédit.
@@ -102,7 +103,7 @@ def predict_text(docPath, docType, model, label_encoder):
     elif docType == "doc":
         
         # Segmenter le document en lignes
-        lines = doc_to_lines
+        lines = doc_to_lines(docPath)
 
         # Initialiser le résultat
         result = ""

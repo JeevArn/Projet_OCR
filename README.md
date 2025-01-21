@@ -44,11 +44,13 @@ Ecrire un script capable de reconnaître les caractères d'une image/document gr
 - Créer un modèle neuronal capable de reconnaître des caractères isolés (`train_ocr_model.ipynb`)
 - Sauvegarder le modèle pour ne pas avoir à le réentraîner (car c'est trèèèèèèèès long) ! (`OCR_20000_words.h5`)
 - Segmenter une image de mot en images de caractères (`word_to_chars`)
+- Segmenter une image de ligne en mots (`line_to_words`)
+- Segmenter une image de document (plusieurs lignes) en lignes (`doc_to_lines`)
 
 #### A faire :
 
-- Segmenter une image de ligne en mots (`line_to_words`)
-- Segmenter une image de document (plusieurs lignes) en lignes (`doc_to_lines`)
+- Appliquer une correction aux résultats de l'OCR (Bert ? Modèle perso ?)
+
 
 ## Interfaces
 
