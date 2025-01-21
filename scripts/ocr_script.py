@@ -144,10 +144,10 @@ def main():
     args = parser.parse_args()
 
     # Charger le modèle d'OCR pré-entraîné
-    model = load_model('OCR_50000_words.h5')
+    model = load_model('../models/OCR_50000_words.h5')
 
     # Formater le LabelEncoder
-    classes = np.load('classes.npy')
+    classes = np.load('../data/classes.npy')
     label_encoder = LabelEncoder()
     label_encoder.fit(classes)
 
