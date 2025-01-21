@@ -35,7 +35,7 @@ def predict_word(image_path, model, label_encoder, image_size=(28, 28)):
         str: Mot prédit.
     """
     # Découper l'image en caractères
-    character_images = split_text_into_characters_tesseract(image_path)
+    character_images = word_to_chars(image_path)
 
     predicted_word = ""
     for img in character_images:
@@ -54,13 +54,14 @@ def predict_word(image_path, model, label_encoder, image_size=(28, 28)):
 
 
 
-def predict_text(docPath, docType):
+def predict_text(docPath, docType, model, label_encoder):
     """
     Prédit le texte d'une image de document.
     
     Parameters:
         docPath (str): Chemin vers l'image du document.
         docType (str): Type de document ("word", "line" ou "doc").
+        model: Modèle entraîné pour la reconnaissance de caractères.
     
     Returns:
         str: Texte prédit.
@@ -129,7 +130,7 @@ def predict_text(docPath, docType):
 def main():
 
     # Vérification du nombre d'arguments
-    if len(sys.argv) != 2:
+    if len(sys.argv) != 3:
         print("Erreur : Nombre incorrect d'arguments.")
         print("Usage : python3 ocr_script.py <docPath> <docType>")
         print('Exemple : python3 ocr_script.py chemin/vers/image.png word')
@@ -144,11 +145,13 @@ def main():
     # Charger le modèle d'OCR pré-entraîné
     model = load_model('OCR_20000_words.h5')
 
-    # Encodage des étiquettes
+    # Formater le LabelEncoder
+    classes = np.load('classes.npy')
     label_encoder = LabelEncoder()
+    label_encoder.fit(classes)
 
     # Effectuer l'OCR de l'image
-    ocr_text = predict_text(args.docPath, args.docType)
+    ocr_text = predict_text(args.docPath, args.docType, model, label_encoder)
     print(ocr_text)
 
 

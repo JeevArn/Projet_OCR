@@ -41,7 +41,7 @@ Ecrire un script capable de reconnaître les caractères d'une image/document gr
 #### Fait :
 
 - Trouver un jeu de données pour entraîner un modèle d'OCR (https://huggingface.co/datasets/DonkeySmall/OCR-English-Printed-12)
-- Créer un modèle neuronal capable de reconnaître des caractères isolés (`train_ocr_model.py`)
+- Créer un modèle neuronal capable de reconnaître des caractères isolés (`train_ocr_model.ipynb`)
 - Sauvegarder le modèle pour ne pas avoir à le réentraîner (car c'est trèèèèèèèès long) ! (`OCR_20000_words.h5`)
 - Segmenter une image de mot en images de caractères (`word_to_chars`)
 
