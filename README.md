@@ -38,16 +38,34 @@ Ecrire un script capable de reconnaître les caractères d'une image/document gr
 
 - texte correspondant au contenu de l'image
 
+#### Scripts
+
+- `train_ocr_model.ipynb` : notebook ayant permis l'entraînement du modèle
+- `segmentation.py` : script permettant de prétraiter les données pour les transformer en images de caractères. Ce script est appelé par le script principal `ocr_script.py`.
+- `ocr_script.py` : script principal, qui effectue la reconnaissance de caractères d'une image donnée.
+
 Commande :
 
 ```sh
 python3 ocr_script.py chemin/vers/image docType
 ```
 
-Exemple :
+Exemple pour un mot :
 
 ```sh
 python3 ocr_script.py ../data/images/word.png word
+```
+
+Exemple pour une ligne :
+
+```sh
+python3 ocr_script.py ../data/images/line.png line
+```
+
+Exemple pour un paragraphe :
+
+```sh
+python3 ocr_script.py ../data/images/doc.png doc
 ```
 
 #### Fait :
