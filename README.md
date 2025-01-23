@@ -53,19 +53,19 @@ python3 ocr_script.py chemin/vers/image docType
 Exemple pour un mot :
 
 ```sh
-python3 ocr_script.py ../data/images/word.png word
+python3 ocr_script.py ../data/images/word3.png word
 ```
 
 Exemple pour une ligne :
 
 ```sh
-python3 ocr_script.py ../data/images/line.png line
+python3 ocr_script.py ../data/images/line2.png line
 ```
 
 Exemple pour un paragraphe :
 
 ```sh
-python3 ocr_script.py ../data/images/doc.png doc
+python3 ocr_script.py ../data/images/doc1.png doc
 ```
 
 #### Fait :
@@ -81,6 +81,7 @@ python3 ocr_script.py ../data/images/doc.png doc
 
 - Tester le modèle avec 10, 15, 20 époques pour voir lequel est le plus performant
 - Appliquer une correction aux résultats de l'OCR (Bert ? Modèle perso ?) --> `correction.py`
+- Faire un fichier de requirements
 
 
 ## Interfaces
