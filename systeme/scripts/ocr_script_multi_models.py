@@ -41,6 +41,7 @@ def predict_word(image_path, model, label_encoder, image_size=(28, 28)):
     Returns:
         str: Mot prédit.
     """
+
     # Découper l'image en caractères
     character_images = word_to_chars(image_path)
 
@@ -74,6 +75,7 @@ def predict_text(docPath, docType, model, label_encoder):
     Returns:
         str: Texte prédit.
     """
+
     # Si l'image est un mot
     if docType == "word":
 
@@ -135,7 +137,7 @@ def predict_text(docPath, docType, model, label_encoder):
 
 
 
-def models_vote(docPath, docType, models, label_encoder):
+def models_vote(docPath, docType, models, classes_files):
     """
     Faire "voter" les modèles pour arriver à une prédiction finale.
     
@@ -148,11 +150,35 @@ def models_vote(docPath, docType, models, label_encoder):
     Returns:
         str: Texte prédit par les modèles.
     """
-    # Effectuer l'OCR de l'image avec chacun des modèles
+    # Initialiser la liste des prédictions
     predictions = []
+
+    # Parcourir chaque modèle
     for model in models:
+
+        # Configurer le fichier de classes en fonction du modèle
+        if model == '../models/OCR_50000w_20e_1.h5':
+            classes = np.load('../data/classes_1.npy')
+        if model == '../models/OCR_50000w_20e_2.h5':
+            classes = np.load('../data/classes_2.npy')
+        if model == '../models/OCR_50000w_20e_3.h5':
+            classes = np.load('../data/classes_3.npy')
+        if model == '../models/OCR_50000w_20e_4.h5':
+            classes = np.load('../data/classes_4.npy')
+        if model == '../models/OCR_50000w_20e_5.h5':
+            classes = np.load('../data/classes_5.npy')
+
+        # Formater le LabelEncoder
+        label_encoder = LabelEncoder()
+        label_encoder.fit(classes)
+
+        # Charger le modèle
         model = load_model(model)
+
+        # Effectuer l'OCR
         ocr_text = predict_text(docPath, docType, model, label_encoder)
+
+        # Ajouter le résultat du modèle aux prédictions
         predictions.append(ocr_text)
     
     # Faire "voter" les modèles pour arriver à une prédiction finale
@@ -180,9 +206,17 @@ def main():
     args = parser.parse_args()
 
     # Formater le LabelEncoder
-    classes = np.load('../data/classes_1.npy')
-    label_encoder = LabelEncoder()
-    label_encoder.fit(classes)
+    #classes = np.load('../data/classes.npy')
+    #label_encoder = LabelEncoder()
+    #label_encoder.fit(classes)
+
+    classes_files = [
+        '../data/classes_1.npy', 
+        '../data/classes_2.npy', 
+        '../data/classes_3.npy'
+        #'../data/classes_4.npy',
+        #'../data/classes_5.npy'
+    ]
 
     # Définir les modèles à utiliser
     models = [
@@ -194,7 +228,7 @@ def main():
         ]
 
     # Faire "voter" les modèles pour arriver à une prédiction finale
-    ocr_text = models_vote(args.docPath, args.docType, models, label_encoder)
+    ocr_text = models_vote(args.docPath, args.docType, models, classes_files)
     print(ocr_text)
 
 
