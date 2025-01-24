@@ -72,20 +72,6 @@ python3 ocr_script.py ../data/images/doc1.png doc
 - `segmentation.py` : script permettant de prétraiter les données pour les transformer en images de caractères. Ce script est appelé par le script principal `ocr_script.py`.
 - `ocr_script.py` : script principal, qui effectue la reconnaissance de caractères d'une image donnée.
 
-
-#### A faire :
-
-- Faire un fichier de requirements
-
-
-
-
-
-
-
-
-
-
 #### Méthodologie
 
 Afin de parvenir à notre objectif, à savoir obtenir un script capable de reconnaître les caractères d'une image grâce à un modèle neuronal pré-entraîné, nous avons procédé avec la méthodologie suivante.

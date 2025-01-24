@@ -24,6 +24,8 @@ import matplotlib.pyplot as plt
 import argparse
 import sys
 from segmentation import word_to_chars, line_to_words, doc_to_lines
+from keras.utils import disable_interactive_logging
+disable_interactive_logging()
 
 
 
@@ -150,7 +152,7 @@ def main():
     args = parser.parse_args()
 
     # Charger le modèle d'OCR pré-entraîné
-    model = load_model('../models/OCR_50000w_20e.h5')
+    model = load_model('../models/OCR_50000w_20e_1.h5')
 
     # Formater le LabelEncoder
     classes = np.load('../data/classes.npy')
