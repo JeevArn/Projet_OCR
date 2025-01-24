@@ -155,7 +155,7 @@ def main():
     model = load_model('../models/OCR_50000w_20e_1.h5')
 
     # Formater le LabelEncoder
-    classes = np.load('../data/classes.npy')
+    classes = np.load('../data/classes_1.npy')
     label_encoder = LabelEncoder()
     label_encoder.fit(classes)
 

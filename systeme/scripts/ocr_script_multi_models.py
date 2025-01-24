@@ -205,16 +205,12 @@ def main():
     parser.add_argument('docType', help='Type de document (doc/line/word)')
     args = parser.parse_args()
 
-    # Formater le LabelEncoder
-    #classes = np.load('../data/classes.npy')
-    #label_encoder = LabelEncoder()
-    #label_encoder.fit(classes)
-
+    # Définir les fichiers contenant les classes
     classes_files = [
         '../data/classes_1.npy', 
         '../data/classes_2.npy', 
-        '../data/classes_3.npy'
-        #'../data/classes_4.npy',
+        '../data/classes_3.npy',
+        '../data/classes_4.npy'
         #'../data/classes_5.npy'
     ]
 
@@ -222,8 +218,8 @@ def main():
     models = [
         '../models/OCR_50000w_20e_1.h5', 
         '../models/OCR_50000w_20e_2.h5', 
-        '../models/OCR_50000w_20e_3.h5'
-        #'../models/OCR_50000w_20e_4.h5',
+        '../models/OCR_50000w_20e_3.h5',
+        '../models/OCR_50000w_20e_4.h5'
         #'../models/OCR_50000w_20e_5.h5'
         ]
 
