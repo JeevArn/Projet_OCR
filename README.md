@@ -90,19 +90,19 @@ python3 ocr_script.py ../data/images/doc1.png doc
 
 Afin de parvenir à notre objectif, à savoir obtenir un script capable de reconnaître les caractères d'une image grâce à un modèle neuronal pré-entraîné, nous avons procédé avec la méthodologie suivante.
 
-1. **Données**
+**1. Données**
 
 Nous avons commencé par trouver un jeu de données permettant d'entraîner un modèle d'OCR. Nous avons utilisé le dataset `DonkeySmall/OCR-English-Printed-12` trouvé sur HuggingFace, contenant 1.000.000 images de mots avec leur transcription en chaîne de caractères.
 Voici des exemples d'images du dataset :
 
 ![Image dataset](systeme/data/doc/extrait_dataset.png "Extrait du jeu de données")
 
-2. **Prétraitement**
+**2. Prétraitement**
 
 Une fois nos données récupérées, il nous a fallu les prétraiter. En effet, nous voulion un modèle capable de reconnaître des images de caractères. Or, le jeu de données étant constitué de mots et non de caractères uniques, nous avons du trouver un moyen de segmenter les images de mots en images de caractères. Pour cela, nous avons utilisé le module `PyTesseract`, qui est un outil de reconnaissance de caractères. Nous avons uniquement utilisé sa méthode `image_to_boxes`, qui segmente une image de texte en images de caractères. Nous avons appliqué cette méthode aux mots de notre dataset et avons conservé uniquement les cas où le nombre de caractères trouvés par segmentation correspondait au nombre de caractères du mot, afin de supprimer les cas où des caractères seraient restés "collés" ou au contraire où un caractère aurait été "coupé en deux".
 Nous avons ainsi obtenu une liste de tuples où le premier élément de chaque tuple correspond à la liste des images de caractères du mot et le second aux caractères correspondants. Nous avons alors pu séparer notre dataset en un ensemble d'entraînement (80%) et un ensemble de test (20%).
 
-3. **Modèle**
+**3. Modèle**
 
 Nous avons ensuite commencé à construire notre modèle. Nous avons testé différentes architectures de modèle, mais celle qui semblait donner les meilleurs résultats est la suivante.
 
@@ -118,7 +118,7 @@ Pour réaliser ce modèle, assez complexe, nous nous sommes beaucoup inspirées 
 - Hariyeh. CNN model implementing OCR. Kaggle. https://www.kaggle.com/code/harieh/cnn-model-implementing-ocr
 - DataCorner. Image processing - Partie 7. DataCorner. https://datacorner.fr/image-processing-7/
 
-4. **Vote des modèles**
+**4. Vote des modèles**
 
 Notre jeu de données contient, on le rappelle, 1.000.000 images de mots avec leur transcription. Ce chiffre étant d'autant plus grand que pour chaque mot, nous effectuons un prétraitement constistant en la segmentation de ses caractères, nous avons rapidement été confrontées à des contraintes matérielles. En effet, au-delà de 50000 mots, nos PC étaient dépassés. Cherchant une solution pour entraîner nostre modèle sur une plus grande partie des données, nous sommes finalement parvenues à une solution pour contourner le problème. Au lieu d'essayer d'entraîner le modèle sur plus de données, nous avons fait le choix d'entraîner le même modèle mais sur 5 sous-ensembles distincts du jeu de données. Ainsi, le premier modèle est entraîné sur les 50000 premiers mots, le deuxième sur les 50000 à 10000 mots suivants, etc. Nous avons ainsi obtenu 5 modèles identiques dans leur architecture et dans leurs paramètres, mais ayant été entraîné sur des données différentes. Nous avons ensuite défini une fonction de vote des modèles. Cela signifie que lorsque l'utilisateur donne une image de texte en entrée, chaque modèle va effectuer une prédiction du contenu textuel de l'image. Puis, notre fonction itère sur chaque caractère prédit par chaque modèle et compte simplement pour chacun lequel est le plus fréquent.
 
