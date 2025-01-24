@@ -189,9 +189,11 @@ def main():
 
     # Définir les modèles à utiliser
     models = [
-        '../models/OCR_50000w_20e.h5', 
-        '../models/OCR_50000w_15e.h5', 
-        '../models/OCR_50000w_10e.h5']
+        '../models/OCR_50000w_20e_1.h5', 
+        '../models/OCR_50000w_20e_2.h5', 
+        '../models/OCR_50000w_20e_3.h5',
+        '../models/OCR_50000w_20e_4.h5',
+        '../models/OCR_50000w_20e_5.h5']
 
     # Faire "voter" les modèles pour arriver à une prédiction finale
     ocr_text = models_vote(args.docPath, args.docType, models, label_encoder)
