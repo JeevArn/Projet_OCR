@@ -1,5 +1,6 @@
 """
-Ce script prend en arguments chemin vers une image de texte et son type (mot, ligne ou paragraphe) et retourne le contenu textuel de l'image.
+Ce script prend en arguments chemin vers une image de texte et son type
+(mot, ligne ou paragraphe) et retourne le contenu textuel de l'image.
 """
 import argparse
 import sys
@@ -45,7 +46,7 @@ def predict_word(image_path, model, label_encoder, image_size=(28, 28)):
 
 
 
-def predict_text(docPath, docType, model, label_encoder):
+def predict_text(doc_path, doc_type, model, label_encoder):
     """
     Prédit le texte d'une image de document.
     
@@ -59,20 +60,20 @@ def predict_text(docPath, docType, model, label_encoder):
         str: Texte prédit.
     """
     # Si l'image est un mot
-    if docType == "word":
+    if doc_type == "word":
 
         # Prédire le mot
-        predicted_word = predict_word(docPath, model, label_encoder)
+        predicted_word = predict_word(doc_path, model, label_encoder)
 
         # Afficher le résultat
         return predicted_word
 
 
     # Si l'image est une ligne
-    elif docType == "line":
+    if doc_type == "line":
 
         # Segmenter la ligne en mots
-        words = line_to_words(docPath)
+        words = line_to_words(doc_path)
 
         # Initialiser le résultat
         result = ""
@@ -91,10 +92,10 @@ def predict_text(docPath, docType, model, label_encoder):
 
 
     # Si l'image est un document
-    elif docType == "doc":
+    if doc_type == "doc":
 
         # Segmenter le document en lignes
-        lines = doc_to_lines(docPath)
+        lines = doc_to_lines(doc_path)
 
         # Initialiser le résultat
         result = ""
@@ -116,6 +117,8 @@ def predict_text(docPath, docType, model, label_encoder):
 
         # Afficher le résultat
         return result
+
+    return None
 
 
 
