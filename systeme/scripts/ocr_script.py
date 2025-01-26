@@ -2,12 +2,14 @@
 Ce script prend en arguments chemin vers une image de texte et son type
 (mot, ligne ou paragraphe) et retourne le contenu textuel de l'image.
 """
-import argparse
 import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
+from systeme.scripts.segmentation import word_to_chars, line_to_words, doc_to_lines
+import click
 import numpy as np
 from sklearn.preprocessing import LabelEncoder
 from tensorflow.keras.models import load_model
-from segmentation import word_to_chars, line_to_words, doc_to_lines
 from keras.utils import disable_interactive_logging
 disable_interactive_logging()
 
@@ -121,21 +123,15 @@ def predict_text(doc_path, doc_type, model, label_encoder):
     return None
 
 
-
-def main():
+@click.command()
+@click.argument('doc_path')
+@click.argument('doc_type')
+def main(doc_path: str, doc_type: str):
     """Fonction principale"""
-    # Vérification du nombre d'arguments
-    if len(sys.argv) != 3:
-        print("Erreur : Nombre incorrect d'arguments.")
-        print("Usage : python3 ocr_script.py <docPath> <docType>")
-        print('Exemple : python3 ocr_script.py chemin/vers/image.png word')
-        sys.exit(1)
 
-    # Parsing des arguments
-    parser = argparse.ArgumentParser(description="Renvoie le contenu textuel d'une image.")
-    parser.add_argument('docPath', help="Chemin vers l'image à océriser")
-    parser.add_argument('docType', help='Type de document (doc/line/word)')
-    args = parser.parse_args()
+    if not os.path.exists(doc_path):
+        print(f"Le fichier '{doc_path}' n'existe pas.")
+        sys.exit(1)
 
     # Charger le modèle d'OCR pré-entraîné
     model = load_model('systeme/models/OCR_50000w_10e.h5')
@@ -146,7 +142,7 @@ def main():
     label_encoder.fit(classes)
 
     # Effectuer l'OCR de l'image
-    ocr_text = predict_text(args.docPath, args.docType, model, label_encoder)
+    ocr_text = predict_text(doc_path, doc_type, model, label_encoder)
     print(ocr_text)
 
 
