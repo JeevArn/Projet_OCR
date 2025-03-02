@@ -164,7 +164,7 @@ def main():
     # Create full training dataset
     full_train_dataset = TamilCharacterDataset(
         data_dir='OCR_tamil_char/data/70-30-split/Train',
-        labels_file='OCR_tamil_char/data/70-30-split/train_labels.csv',
+        labels_file='OCR_tamil_char/data/train_labels.csv',
         transform=transform
     )
     
@@ -185,7 +185,7 @@ def main():
     val_loader = DataLoader(val_dataset, batch_size=32, shuffle=False, num_workers=4)
     
     # Get the number of unique Tamil characters (classes)
-    num_classes = len(pd.read_csv('OCR_tamil_char/data/70-30-split/train_labels.csv')['Ground Truth'].unique())
+    num_classes = len(pd.read_csv('OCR_tamil_char/data/train_labels.csv')['Ground Truth'].unique())
     print(f'Number of classes: {num_classes}')
     
     # Initialize the OCR model

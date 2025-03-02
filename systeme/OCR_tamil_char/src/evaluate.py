@@ -247,7 +247,7 @@ def main():
     # Create test dataset
     test_dataset = TamilCharacterDataset(
         data_dir='systeme/OCR_tamil_char/data/70-30-split/Test',
-        labels_file='systeme/OCR_tamil_char/data/70-30-split/test_labels.csv',
+        labels_file='systeme/OCR_tamil_char/data/test_labels.csv',
         transform=transform
     )
     
@@ -255,7 +255,7 @@ def main():
     test_loader = DataLoader(test_dataset, batch_size=32, shuffle=False, num_workers=4)
     
     # Get number of classes
-    num_classes = len(pd.read_csv('systeme/OCR_tamil_char/data/70-30-split/train_labels.csv')['Ground Truth'].unique())
+    num_classes = len(pd.read_csv('systeme/OCR_tamil_char/data/train_labels.csv')['Ground Truth'].unique())
     print(f'Number of classes: {num_classes}')
     
     # Initialize model
@@ -284,7 +284,7 @@ def main():
     print(f'Average Confidence: {np.mean(confidences):.4f}')
     
     # Get unique classes
-    classes = sorted(pd.read_csv('systeme/OCR_tamil_char/data/70-30-split/train_labels.csv')['Ground Truth'].unique())
+    classes = sorted(pd.read_csv('systeme/OCR_tamil_char/data/train_labels.csv')['Ground Truth'].unique())
     
     # Generate and print detailed classification report
     report = classification_report(true_labels, predictions, target_names=[str(c) for c in classes])
