@@ -10,7 +10,7 @@ TEST
 
 curl -X POST http://127.0.0.1:8000/ocr/ \
 -H "Content-Type: application/json" \
--d '{"image_path": "systeme/data/images/doc1.png", "ocr_type": "doc"}'
+-d '{"image_path": "systeme/OCR_latin_char/data/images/doc1.png", "ocr_type": "doc"}'
 
 """
 import subprocess
@@ -33,11 +33,11 @@ async def perform_ocr(request: OCRRequest):
     try:
         # Définir le PYTHONPATH pour inclure le répertoire parent de 'systeme'
         env = os.environ.copy()
-        env["PYTHONPATH"] = "/Users/jeevyaroun/Desktop/projet_OCR/Reseaux_neurones"
+        env["PYTHONPATH"] = "/Users/jeevyaroun/Desktop/final_git/projet_OCR/Reseaux_neurones"
 
         # Utiliser subprocess pour appeler la fonction main via la ligne de commande
         command = [
-            'python', 'systeme/scripts/ocr_script.py', 
+            'python', 'systeme/OCR_latin_char/scripts/ocr_script.py', 
             request.image_path, request.ocr_type
         ]
 

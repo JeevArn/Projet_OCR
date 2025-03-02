@@ -8,7 +8,7 @@ from tensorflow.keras.models import load_model
 
 # Import the OCR functions from ocr_script.py
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
-from systeme.scripts.ocr_script import predict_text, predict_word
+from systeme.OCR_latin_char.scripts.ocr_script import predict_text, predict_word
 
 # Streamlit app logic
 st.title("OCR Model")
@@ -26,10 +26,10 @@ if uploaded_file is not None:
     image.save(image_path)
 
     # Load the OCR model
-    model = load_model('systeme/models/OCR_50000w_10e.h5')
+    model = load_model('systeme/OCR_latin_char/models/OCR_50000w_10e.h5')
 
     # Load the label encoder (class names for predictions)
-    classes = np.load('systeme/data/classes_1.npy')
+    classes = np.load('systeme/OCR_latin_char/data/classes_1.npy')
     label_encoder = LabelEncoder()
     label_encoder.fit(classes)
 

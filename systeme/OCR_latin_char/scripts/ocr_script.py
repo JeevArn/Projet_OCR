@@ -4,8 +4,8 @@ Ce script prend en arguments chemin vers une image de texte et son type
 """
 import sys
 import os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
-from systeme.scripts.segmentation import word_to_chars, line_to_words, doc_to_lines
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', '..')))
+from systeme.OCR_latin_char.scripts.segmentation import word_to_chars, line_to_words, doc_to_lines
 import click
 import numpy as np
 from sklearn.preprocessing import LabelEncoder
@@ -134,10 +134,10 @@ def main(doc_path: str, doc_type: str):
         sys.exit(1)
 
     # Charger le modèle d'OCR pré-entraîné
-    model = load_model('systeme/models/OCR_50000w_10e.h5')
+    model = load_model('systeme/OCR_latin_char/models/OCR_50000w_10e.h5')
 
     # Formater le LabelEncoder
-    classes = np.load('systeme/data/classes_1.npy')
+    classes = np.load('systeme/OCR_latin_char/data/classes_1.npy')
     label_encoder = LabelEncoder()
     label_encoder.fit(classes)
 
