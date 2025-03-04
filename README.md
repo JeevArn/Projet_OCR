@@ -1,15 +1,15 @@
 # 🔍 Système OCR 🔍
 Système de reconnaissance optique de caractères (OCR) supportant les caractères latins et tamouls.
 
-## 📋 Table des matières 📋
-- [Installation](#-installation)
-- [Utilisation](#-utilisation)
-  - [Interface Web](#-interface-web)
-  - [API REST](#-api-rest)
-  - [Scripts en ligne de commande](#-scripts-en-ligne-de-commande)
-- [Modèles et Performances](#-modèles-et-performances)
+## 📋 Table des matières ��
+- [Installation](#installation)
+- [Utilisation](#utilisation)
+  - [Interface Web](#interface)
+  - [API REST](#api-rest)
+  - [Scripts en ligne de commande](#scripts)
+- [Modèles et Performances](#models)
 
-## 🛠 Installation 🛠
+## 🛠 Installation 🛠 <a name="installation"></a>
 
 1. Cloner le repository :
 ```bash
@@ -28,14 +28,14 @@ source venv/bin/activate  # Linux/Mac
 pip install -r requirements.txt
 ```
 
-## 💻 Utilisation 💻
+## 💻 Utilisation 💻 <a name="utilisation"></a>
 
-### 🌐 Interface Web 🌐
+### 🌐 Interface Web 🌐 <a name="interface"></a>
 
 Notre interface web est disponible à cette adresse :  
 🚀 **https://projetocr-nsnrgcfdbknwyzgxl3hgpz.streamlit.app** 🚀
 
-### 🔌 API REST 🔌
+### 🔌 API REST 🔌 <a name="api-rest"></a>
 
 Lancer le serveur API :
 ```bash
@@ -53,8 +53,7 @@ curl -X POST http://127.0.0.1:8000/ocr/ \
 ```
 plus du documentation sur l'API est disponible sur notre [site](https://projetocr-nsnrgcfdbknwyzgxl3hgpz.streamlit.app).
 
-
-### 📜 Scripts en ligne de commande 📜
+### 📜 Scripts en ligne de commande 📜 <a name="scripts"></a>
 
 #### OCR Latin
 ```bash
@@ -63,6 +62,7 @@ python systeme/OCR_latin_char/scripts/ocr_script.py <chemin_image> <type>
 - `<chemin_image>` : Chemin vers l'image à analyser
 - `<type>` : Type de document ('word', 'line', ou 'doc')  
 (des images à tester sont disponibles dans [ici](systeme/OCR_latin_char/data/images/))
+
 #### OCR Tamoul
 ```bash
 python systeme/OCR_tamil_char/src/predict.py <chemin_image> <type>
@@ -71,6 +71,6 @@ python systeme/OCR_tamil_char/src/predict.py <chemin_image> <type>
 - `<type>` : Type de document ('word', 'line', ou 'doc')  
 (des images à tester sont disponibles dans [ici](systeme/OCR_tamil_char/data/images_for_testing/))
 
-## 🤖 Modèles et Performances 🤖
+## 🤖 Modèles et Performances 🤖 <a name="models"></a>
 
 Nos modèles d'OCR de caractères latins et tamouls ont une accuracy de respectivement ... et 95%, plus d'infos sur nos modèles dans le fichier [methodo](methodo.md).
