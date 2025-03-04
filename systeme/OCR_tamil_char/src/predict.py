@@ -30,7 +30,7 @@ def load_tamil_mapping(mapping_file: str) -> dict:
     return {idx: unicode_char for idx, unicode_char in zip(mapping_df['class'], mapping_df['unicode'])}
 
 
-def preprocess_image(image: Image.Image, image_size: Tuple[int, int] = (32, 32)) -> torch.Tensor:
+def preprocess_image(image: Image.Image, image_size: Tuple[int, int] = (64, 64)) -> torch.Tensor:
     """
     Preprocess an image for the model.
     
