@@ -68,7 +68,13 @@ Notre objectif pour ce modèle est de pouvoir reconnaître des caractères tamou
 
 **1. Données**
 
-Nous avons utililé le dataset uTHCD Unconstrained Tamil Handwritten Database (Shaffi 2021) disponible en libre accès sur [Kaggle](https://www.kaggle.com/datasets/faizalhajamohideen/uthcdtamil-handwritten-database). Ce jeu de données contient 90950 images de caractères tamouls manuscrits, couvrant 156 caractères (et donc 156 classes) différents.
+Nous avons utililé le dataset uTHCD Unconstrained Tamil Handwritten Database (Shaffi 2021) disponible en libre accès sur [Kaggle](https://www.kaggle.com/datasets/faizalhajamohideen/uthcdtamil-handwritten-database). Ce jeu de données contient 90950 images de caractères tamouls manuscrits, couvrant 156 caractères (et donc 156 classes) différents. En voici quelques exemples d'images :  
+![img tamil_train_set](systeme/OCR_tamil_char/data/train_set_sample/1s_003.bmp)
+![img tamil_train_set](systeme/OCR_tamil_char/data/train_set_sample/1s_006.bmp)
+![img tamil_train_set](systeme/OCR_tamil_char/data/train_set_sample/1s_007.bmp)
+![img tamil_train_set](systeme/OCR_tamil_char/data/train_set_sample/1s_012.bmp)
+![img tamil_train_set](systeme/OCR_tamil_char/data/train_set_sample/1s_013.bmp)
+![img tamil_train_set](systeme/OCR_tamil_char/data/train_set_sample/1s_015.bmp)
 
 **2. Prétraitement**
 
@@ -125,7 +131,7 @@ Nous avons également plotté la matrice de confusion disponible [ici](systeme/O
 
 *Conclusion sur le modèle d'OCR du tamoul* :
 
-Shaffi 2021 avait obtenu une accuracy de 0.91 sur le jeu de donnée test, nous avons réussi à obtenir une accuracy de *0.95* soit une amélioration de 0.04. Cependant, notre modèle emet des erreurs avec une confiance très haute notamment sur les caractères composés, et il reste très peu performant sur les données extérieurs au test set.
+Shaffi 2021 avait obtenu une accuracy de 0.91 sur le jeu de donnée test, nous avons réussi à obtenir une accuracy de *0.95* soit une amélioration de 0.04. Cependant, notre modèle emet des erreurs avec une confiance très haute notamment sur les caractères composés, et il reste très peu performant sur les données extérieurs au test set. On pourrait expliquer cela par le manque de diversité de nos données et la taille restreinte du dataset, de plus nous avons 156 classes de caractères dont certains qui sont assez difficiles à distinguer entre eux.
 
 ## Interface Web et API
 
