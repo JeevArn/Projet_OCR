@@ -1,7 +1,7 @@
 # 🔍 Système OCR 🔍
 Système de reconnaissance optique de caractères (OCR) supportant les caractères latins et tamouls.
 
-## 📋 Table des matières ��
+## 📋 Table des matières 📋
 - [Installation](#installation)
 - [Utilisation](#utilisation)
   - [Interface Web](#interface)
