@@ -9,7 +9,8 @@ Afin de parvenir à notre objectif, à savoir obtenir un script capable de recon
 Nous avons commencé par trouver un jeu de données permettant d'entraîner un modèle d'OCR. Nous avons utilisé le dataset `DonkeySmall/OCR-English-Printed-12` trouvé sur HuggingFace, contenant 1.000.000 images de mots avec leur transcription en chaîne de caractères.
 Voici des exemples d'images du dataset :
 
-![Image dataset](systeme/data/doc/extrait_dataset.png "Extrait du jeu de données")
+![Image dataset](systeme/OCR_latin_char/data/doc/extrait_dataset.png "Extrait du jeu de données")
+
 
 **2. Prétraitement**
 
@@ -48,11 +49,18 @@ Pour le premier caractère, pas de souci, les 5 modèles ont tous prédit un "a"
 
 Pour le second caractère en revanche, deux des modèles ont prédit un "q" tandis que les trois autres ont prédit un "g". On va donc choisir un "g" pour la prédiction finale car c'est le caractère prédit pour la majorité des modèles, etc.
 
-Cette astuce nous permet d'augmenter la fiabilité de la prédiction textuelle.
+Cette astuce nous permettrait en théorie d'augmenter la fiabilité de la prédiction textuelle.
+
+Dans les faits, c'est avec le modèle simple que nous obtenons les meilleures performances. C'est donc celui que nous conservons.
 
 #### Résultats
 
-- Les résultats (fichiers output, visualisations…) et une discussion sur ces résultats (ce que vous auriez aimé faire et ce que vous avez pu faire par exemple)
+On remarque que les erreurs les plus fréquentes faites par le modèle concernent le caractère “e”. En effet, comme on peut le voir sur les deux figures ci-dessous, dans de nombreux cas, le modèle transcrit un “e” à la place d’un autre caractère. Cela peut peut-être être expliqué par le fait que comme il s’agit d’un caractère très fréquent dans notre jeu de données, le modèle a moins de chance de se tromper en attribuant le label “e” à un caractère d’entrée, ce qui correspond à une stratégie pour minimiser la loss. Une des perspectives pourrait être de contrôler la proportion des caractères dans le jeu de données d’entraînement pour éviter ce type de biais.
+
+![Heatmap errors](systeme/OCR_latin_char/data/doc/heatmap_errors.png "Carte thermique des erreurs")
+
+![Error frequencies](systeme/OCR_latin_char/data/doc/freq_errors.png "Erreurs les plus fréquentes")
+
 
 ## OCR caractères tamouls
 
@@ -126,3 +134,8 @@ Nous avons choisi de créer un interface web avec Streamlit qui permet de créer
 ## Références
 
 - Shaffi, N., & Hajamohideen, F. (2021). uTHCD: A new benchmarking for Tamil handwritten OCR. IEEE Access, 9, 101469–101493. https://doi.org/10.1109/access.2021.3096823
+- Simple Convolutional Neural Network (CNN) for Dummies in PyTorch: A step-by-step guide. Medium. https://medium.com/@myringoleMLGOD/simple-convolutional-neural-network-cnn-for-dummies-in-pytorch-a-step-by-step-guide-6f4109f6df80
+- Cours de CNN de Cédric Gendrot
+- Hariyeh. CNN model implementing OCR. Kaggle. https://www.kaggle.com/code/harieh/cnn-model-implementing-ocr
+- DataCorner. Image processing - Partie 7. DataCorner. https://datacorner.fr/image-processing-7/
+- DonkeySmall/OCR-English-Printed-12

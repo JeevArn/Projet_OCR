@@ -73,4 +73,4 @@ python systeme/OCR_tamil_char/src/predict.py <chemin_image> <type>
 
 ## 🤖 Modèles et Performances 🤖 <a name="models"></a>
 
-Nos modèles d'OCR de caractères latins et tamouls ont une accuracy de respectivement ... et 95%, plus d'infos sur nos modèles dans le fichier [methodo](methodo.md).
+Nos modèles d'OCR de caractères latins et tamouls ont une accuracy de respectivement 75% et 95%, plus d'infos sur nos modèles dans le fichier [methodo](methodo.md).
